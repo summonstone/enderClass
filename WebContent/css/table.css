@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+.table-container {
+  padding: 0 10%;
+  margin: 40px auto 0;
+}
+
+.heading {
+  font-size: 40px;
+  text-align: center;
+  color: black;
+  margin-bottom: 40px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: #e9967a;
+}
+
+.table thead tr th {
+  font-size: 14px;
+  letter-spacing: 0.35px;
+  color: #ffffff;
+  opacity: 1;
+  padding: 12px;
+  vertical-align: top;
+  border: 1px solid #dee2e685;
+}
+
+.table tbody tr td {
+  font-size: 14px;
+  letter-spacing: 0.35px;
+  font-weight: normal;
+  color: #000;
+  padding: 8px;
+  text-align: center;
+  border: 2px solid #dee2e685;
+}
+
+.table tbody tr td .btn {
+  width: 130px;
+  text-decoration: none;
+  line-height: 35px;
+  display: inline-block;
+  background-color: #e9967a;
+  color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  font-size: 14px;
+  opacity: 1;
+  box-shadow: 2px 5px 10px rgb(0 0 0 / 90%);
+}
+
+.table tbody tr td .btn:hover {
+	background-color: black;
+}
+
+.frm p {
+	margin-left: 90%;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.frm p input {
+	font-size: 20px;
+}
+
+/* 관리자 강의 목록 */
+.regist_LEC {
+	width: 130px;
+    text-decoration: none;
+    line-height: 35px;
+    display: inline-block;
+    background-color: #e9967a;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    opacity: 1;
+	margin-left: 46%;
+	margin-top: 20px;
+}
+
+/* 관리자 강의 등록 */
+.regi_container {
+	padding: 0px 39%;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.ad_regist {
+	background: #e9967a;
+	width: 55px;
+}
+
+.in_regist input {
+	border: 1px solid #e9967a;
+    width: 60%;
+    font-size: 20px;
+    border-radius: 0.5rem;
+}
+
+.sel_book {
+	border: 2px solid #e9967a;
+    border-radius: 0.8rem;
+    width: 45px;
+    height: 30px;
+}
+
+.book_name {
+	text-align: center;
+}
+
+/* 주문 관련 */
+.or-btn {
+	text-align: right;
+	font-size: 30px;
+}
+
+.won-text {
+	text-align: right;
+}
+
+.won-text input {
+	font-size: 22px;
+	margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tr {
+    margin-bottom: 15px;
+  }
+
+  .table tbody tr td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: left;
+  }
+}
