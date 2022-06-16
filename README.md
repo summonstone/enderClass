@@ -11,6 +11,7 @@
 -Jsp/Servlet
 
 ## 구현기능
+
 -게시판 CRUD
 
 -검색기능
@@ -40,7 +41,7 @@
 -글 삭제하기
 
 <img width="537" alt="수정하기" src="https://user-images.githubusercontent.com/96528498/174109632-39b04fed-b366-4475-ba00-589830796ebd.PNG">
--글 
+-글 수정하기
 
 
 
