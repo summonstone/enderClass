@@ -12,5 +12,7 @@
 
 ## 구현기능
 -게시판 CRUD
+<img width="446" alt="starry night" src="https://user-images.githubusercontent.com/96528498/174106519-fa1dc6ba-c2d0-41a2-8d15-4a70bf658dde.PNG">
+
 
 
