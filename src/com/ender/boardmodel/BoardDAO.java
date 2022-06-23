@@ -22,9 +22,9 @@ public class BoardDAO {
 	}
 
 //	전체 목록 검색
-	public List<BoardVO> boardSearchAll() {
+	public List<BoardVO> boardSearchAll(BoardVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
-		List<BoardVO> list = session.selectList("nboardSearchAll");
+		List<BoardVO> list = session.selectList("nboardSearchAll",vo);
 		session.close();
 		return list;
 
@@ -80,5 +80,13 @@ public class BoardDAO {
 		session.close();
 		return list;
 	}
+	
+	//게시판 테이블 개수
+		public int boardPageCount() {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.selectOne("nboardPageCount");
+			session.close();
+			return cnt;
+		}
 
 }

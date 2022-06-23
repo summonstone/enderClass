@@ -199,8 +199,7 @@
 	<!-- 게시판 -->
 
 	<select id="nboardSearchAll" resultType="boardVO">
-		select * from board
-		order by bo_num desc
+		select * from board order by bo_num desc limit #{page},10
 	</select>
 
 	<insert id="nboardInsert" parameterType="boardVO">
@@ -231,6 +230,10 @@
 	<select id="nboardSearch" resultType="boardVO">
 		SELECT * FROM board WHERE
 		UPPER(${part}) LIKE UPPER(#{searchData})
+	</select>
+	
+	<select id="nboardPageCount" resultType="Integer">
+	    select count(*) from board
 	</select>
 	
 </mapper>

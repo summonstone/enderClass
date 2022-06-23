@@ -1,3 +1,5 @@
+<%@page import="com.ender.boardmodel.PageVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.ender.usermodel.UserDTO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,7 +17,17 @@ if (session.getAttribute("userID") != null) {
 	userID = (String) session.getAttribute("userID");
 }
 UserDTO dto = new UserDTO();
+ArrayList<BoardVO> list =(ArrayList<BoardVO>)request.getAttribute("list");
+PageVO pvo =(PageVO)request.getAttribute("pvo");
+
+int listCount=pvo.getListCount();
+int nowPage = pvo.getPage();
+int maxPage = pvo.getMaxPage();
+int startPage = pvo.getStartPage();
+int endPage = pvo.getEndPage();
+
 %>
+
 
 <script type="text/javascript">
 	function checkForm() {	
@@ -101,17 +113,40 @@ UserDTO dto = new UserDTO();
 				</c:forEach>
 
 			</div>
-			<div class="board_page">
-				<a href="#" class="bt first"><</a>
-				<a href="#" class="bt prev"><<</a>
-				<a href="#" class="num on">1</a>
-				<a href="#" class="num">2</a>
-				<a href="#" class="num">3</a>
-				<a href="#" class="num">4</a>
-				<a href="#" class="num">5</a>
-				<a href="#" class="bt next">></a>
-				<a href="#" class="bt last">>></a>
-			</div>
+		<section id="pageList">
+			<%
+		if(list !=null && listCount >0){
+		%>
+		<%if(nowPage<=1){ %>
+		[이전]&nbsp;
+		<%}else{ %>
+		<a href="boardList.do?page=<%=nowPage-1 %>">[이전]</a>&nbsp;
+		<%} %>
+
+		<%for(int a=startPage;a<=endPage;a++){
+				if(a==nowPage){%>
+		[<%=a %>]
+		<%}else{ %>
+		<a href="boardList.do?page=<%=a %>">[<%=a %>]
+		</a>&nbsp;
+		<%} %>
+		<%} %>
+
+		<%if(nowPage>=maxPage){ %>
+		[다음]
+		<%}else{ %>
+		<a href="boardList.do?page=<%=nowPage+1 %>">[다음]</a>
+		<%} %>
+	</section>
+	<%
+    }
+	else
+	{
+	%>
+	<section id="emptyArea">등록된 글이 없습니다.</section>
+	<%
+	}
+%>
 
 			<div class="bt_wrap">
 				<input type="button" value="글쓰기" class="do-btn"
