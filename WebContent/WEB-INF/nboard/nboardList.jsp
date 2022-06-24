@@ -111,9 +111,83 @@ int endPage = pvo.getEndPage();
 						<div class="count">${vo.bo_readcount}</div>
 					</div>
 				</c:forEach>
+				
+				<div class="board_page">
+				 <a href="#" class="bt prev"><</a>
+				 <a href="#" class="num on">1</a>
+				 <a href="#" class="num">2</a> 
+				 <a href="#" class="num">3</a>
+				 <a href="#" class="num">4</a>
+				 <a href="#" class="num">5</a>
+				 <a href="#" class="bt next">></a>
+			</div>
 
 			</div>
-		<section id="pageList">
+		<c:set var="listCount" value="${pvo.getListCount()}"    />
+		<c:set var="nowPage" value="${pvo.getPage()}"    />
+		<c:set var="maxPage" value="${pvo.getMaxPage()}"    />
+		<c:set var="startPage" value="${pvo.getStartPage()}"    />
+		<c:set var="endPage" value="${pvo.getEndPage()}"    />
+		
+		
+		<c:choose>
+			<c:when test="${list !=null && listCount >0}">
+				<c:choose>
+					<c:when test="${nowPage <= 1}">[이전]&nbsp;</c:when>
+					<c:otherwise><a href="boardList.do?page=${nowPage-1}">[이전]</a>&nbsp; </c:otherwise>
+				</c:choose>
+					<c:forEach var="a" items="${list}" begin="${startPage}" end="${endPage}" step="1">
+						<c:choose>
+							<c:when test="${startPage == nowPage}">
+								[${nowPage}]
+							</c:when>
+							<c:otherwise>
+								<a href="boardList.do?page=${nowPage}">[ ${nowPage} ]
+								</a>&nbsp;
+							</c:otherwise> 
+						</c:choose>
+					</c:forEach>
+				<c:choose>
+					<c:when test="${nowPage>=maxPage}">
+						[다음]
+					</c:when>
+					<c:otherwise>
+						<a href="boardList.do?page=${nowPage+1}">[다음]</a>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+		</c:choose>
+		
+		
+		
+		 <%-- <c:choose>
+		<c:when test="${list !=null && listCount >0}">
+			<c:when test="${nowPage <= 1}">[이전]&nbsp;</c:when>
+			<c:otherwise><a href="boardList.do?page=${nowPage-1}" class="bt prev">[이전]</a>&nbsp; </c:otherwise>
+			
+		<c:forEach var="pvo" items="${pvo }" varStatus="a">
+		<c:when test="${a==pvo.nowPage }">
+		${pvo.startPage}
+		
+		</c:when>
+		<c:otherwise>
+		<a href="boardList.do?page=${pvo.startPage}" class="num">[${pvo.startPage}]
+		</a>&nbsp;
+		</c:otherwise> 
+		</c:forEach>
+	<c:when test="${nowPage>=maxPage}">
+	[다음]
+	</c:when>
+	<c:otherwise>
+	<a href="boardList.do?page=${nowPage+1}" class="bt next">[다음]</a>
+	</c:otherwise>
+	</c:when>
+	<c:otherwise>
+		<section id="emptyArea">등록된 글이 없습니다.3</section>
+</c:otherwise>
+</c:choose>  --%>
+
+<section id="pageList">
 			<%
 		if(list !=null && listCount >0){
 		%>
@@ -147,6 +221,8 @@ int endPage = pvo.getEndPage();
 	<%
 	}
 %>
+
+
 
 			<div class="bt_wrap">
 				<input type="button" value="글쓰기" class="do-btn"
